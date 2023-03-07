@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import HookExample from "./components/useEffectExample";
+import Timer from "./components/timer";
+import { useState } from "react";
+//react hooks rules
+/*
+1.Hooks pot fi executate(chemate) doar in componente tip function.
+2.Hooks nu pot fi executate(chemate) in blockuri de tip if, for, while.
+3.Hooks trebuie sa fie declarate obligatoriu cu "useXxxx".
+*/
 
 function App() {
+  const [showTimer, setShowTimer] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => setShowTimer(!showTimer)}>show timer</button>
+      <HookExample />
+      {showTimer ? <Timer /> : null /*conditional rendering*/}
     </div>
   );
 }
